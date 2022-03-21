@@ -14,7 +14,8 @@ class CompanyInvoice(models.Model):
     def uuid(self):
        uid = str(uuid.uuid1())
        return uid.replace("-", "")[:12]
-
+    class Meta:
+        ordering = ['-pk']
     def __str__(self) -> str:
         return self.company_name
 

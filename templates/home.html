@@ -7,11 +7,21 @@
 
 {% block content %}
 
-<div class="forms">
-  <form action="", method="post">
+<hr>
+<div class="content">
 
-    {{form|crispy}}
-  </form>
+  <div class="row">
+    <div class="col-md-6">
+      <h5>Invoice Number: {{company.uuid}}</h5>
+      <h5>Invoice date: {{company.invoice_date}}</h5>
+      <h5>Balance Due: {{company.balance_due }}</h5>
+    </div>
+    <div class="col-md-6">
+      <h5>Company Name: {{company.company_name}}</h5>
+      <h5>address: {{company.address}}</h5>
+    </div>
+  </div>
 </div>
+<hr>
 
 {% endblock content%}
