@@ -2,24 +2,15 @@ from django.db import models
 import uuid
 
 # Create your models here.
-
-def modify(token):
-  new_token = token[:12]
-  return new_token.replace('-', "")
-  
-          
+       
 
 
 class CompanyInvoice(models.Model):
-    uid = modify(str(uuid.uuid4()))
-    uid = models.CharField(default=uid,
-                          editable=False,
-                          max_length=255)
-
     company_name = models.CharField(max_length=255)
     invoice_date = models.DateField()
     balance_due = models.IntegerField()
     address =  models.CharField(max_length=255)
+    uid=models.CharField(blank=True, max_length=11, null=True, editable=False)
 
     # @property
     # def uuid(self):
@@ -31,7 +22,10 @@ class CompanyInvoice(models.Model):
         ordering = ['-pk']
     def __str__(self) -> str:
         return self.company_name
-
+    
+    def save(self, *args, **kwargs):
+        self.uid = str(uuid.uuid4()).replace("-", "")[:10]
+        return super().save(self, *args, **kwargs)
     
 
 
