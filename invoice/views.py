@@ -14,12 +14,19 @@ def home(request):
   else:
     form = AddCompanyForm()
 
-  companies = CompanyInvoice.objects.all()[0]
-  print(companies)
+  all_companies = CompanyInvoice.objects.all()
+  company = ""
+  
+  if not all_companies:
+    ...
+  else:
+   company = all_companies[0]
+   print(all_companies)
+  
 
   context = {
     "form":form,
-    "company": companies
+    "company": company
   }
 
   
