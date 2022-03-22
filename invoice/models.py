@@ -33,7 +33,8 @@ class AddItems(models.Model):
     item = models.CharField(max_length=255)
     descrition = models.TextField()
     unit_cost = models.DecimalField(decimal_places=2, max_digits=40)
-    quantity = models.CharField(max_length=255)
+    quantity = models.IntegerField()
+    total = models.CharField(max_length=255, editable=False)
     Company_invoice = models.ForeignKey(CompanyInvoice, on_delete=models.CASCADE)
 
     class Meta:
@@ -41,3 +42,8 @@ class AddItems(models.Model):
 
     def __str__(self):
         return self.item
+
+    def save(self, *args, **kwargs):
+        self.total = self.quantity * self.unit_cost
+        return super().save(self, *args, **kwargs)
+    
