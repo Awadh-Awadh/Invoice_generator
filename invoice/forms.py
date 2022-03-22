@@ -10,5 +10,5 @@ class AddCompanyForm(forms.ModelForm):
 
 class AddItemsForm(forms.ModelForm):
   class Meta:
-    models = AddItems
-    fields = [ "item", "description", "unit_cost", "quantity", "total" ]
+    model = AddItems
+    fields = [ "item", "descrition", "unit_cost", "quantity" ]

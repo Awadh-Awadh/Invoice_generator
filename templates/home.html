@@ -23,5 +23,58 @@
   </div>
 </div>
 <hr>
+<br>
+<br>
+<br>
+
+<div class="item">
+  <table class="table">
+    <tr>
+      <th scope="col">Item</th>
+      <th scope="col">Description</th>
+      <th scope="col">unit_cost</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Amount</th>
+    </tr>
+    <tr>
+      <td>{{item.item}}</td>
+      <td>{{item.description}}</td>
+      <td>{{item.unit_cost}}</td>
+      <td>{{item.quantity}}</td>
+      <td>{{item.total}}</td>
+    </tr>
+    
+  </table>
+  <div class="add-item">
+    <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#itemModal">Add Item</button>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="itemModal" tabindex="-1" aria-labelledby="itemModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="itemModalLabel">Add Item</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="forms">
+          <form action="", method="post">
+            {% csrf_token %}
+        
+            {{form_a|crispy}}
+            <button id="btn" onclick="button_onclick()" type = "submit" class = "btn btn-success mt-3">Add</button>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
 
 {% endblock content%}
