@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import AddCompanyForm, AddItemsForm
-from .models import CompanyInvoice
+from .models import CompanyInvoice, AddItems
 # Create your views here.
 
 
@@ -9,7 +9,7 @@ from .models import CompanyInvoice
 
 def home(request):
 
-  # add comapny logic
+  # add comapany form logic
   if request.method == "POST":
     form = AddCompanyForm(request.POST)
     form_a = AddItemsForm(request.POST, None)
@@ -17,10 +17,15 @@ def home(request):
       form.save()
       return redirect('invoice')
 
-  # add items logic
+  # add items form logic
 
     if form_a.is_valid():
-      invoice = CompanyInvoice.objects.all()[0]
+      invoice =""
+      invoices = CompanyInvoice.objects.all()
+      if invoices:
+         invoice = invoices[0]
+      else:
+        ...
       obj = form_a.save(commit=False)
       obj.Company_invoice = invoice
       form_a.save()
@@ -30,19 +35,27 @@ def home(request):
     form = AddCompanyForm()
     form_a = AddItemsForm()
 
+  # Displaying the most recent company details
   all_companies = CompanyInvoice.objects.all()
-  company = ""
-  
+  company = ""  
   if not all_companies:
     ...
+
   else:
    company = all_companies[0]
    print(all_companies)
+
+  # Display table details for items
+
+  items = AddItems.objects.all()
+  print(items)
 
   context = {
     "form":form,
     "form_a":form_a,
     "company": company,
+    "items": items
+  
   }
 
   
