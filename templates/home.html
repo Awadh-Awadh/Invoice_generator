@@ -36,19 +36,28 @@
       <th scope="col">Quantity</th>
       <th scope="col">Amount</th>
     </tr>
+    {% for item in items %}
     <tr>
+      
       <td>{{item.item}}</td>
-      <td>{{item.description}}</td>
+      <td>{{item.descrition}}</td>
       <td>{{item.unit_cost}}</td>
       <td>{{item.quantity}}</td>
       <td>{{item.total}}</td>
+      {% endfor %}
     </tr>
     
   </table>
   <div class="add-item">
     <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#itemModal">Add Item</button>
 </div>
-
+<br><br><br>
+{% if items %}
+<div class="add-item">
+  <a href="{% url 'print' %}"> <button id = "printBtn" class="btn btn-dark">Print</button></a>
+ 
+</div>
+{% endif %}
 
 <!-- Modal -->
 <div class="modal fade" id="itemModal" tabindex="-1" aria-labelledby="itemModalLabel" aria-hidden="true">

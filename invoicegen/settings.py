@@ -44,11 +44,12 @@ INSTALLED_APPS = [
     'invoice',
 
     #installed
-
     'crispy_forms',
 
 
 ]
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

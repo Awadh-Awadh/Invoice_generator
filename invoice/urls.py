@@ -4,7 +4,8 @@ from .views import home
 
 urlpatterns = [
   
-  path("", home, name="invoice")
+  path("", home, name="invoice"),
+  path("print", print, name='print')
   
   
   ]
