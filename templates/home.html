@@ -49,12 +49,12 @@
     
   </table>
   <div class="add-item">
-    <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#itemModal">Add Item</button>
+    <button id ="add" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#itemModal">Add Item</button>
 </div>
 <br><br><br>
 {% if items %}
 <div class="add-item">
-  <a href="{% url 'print' %}"> <button id = "printBtn" class="btn btn-dark">Print</button></a>
+  <button id = "printBtn" class="btn btn-dark">Print</button>
  
 </div>
 {% endif %}
@@ -69,7 +69,7 @@
       </div>
       <div class="modal-body">
         <div class="forms">
-          <form action="", method="post">
+          <form action="{% url 'invoice' %}", method="post">
             {% csrf_token %}
         
             {{form_a|crispy}}
